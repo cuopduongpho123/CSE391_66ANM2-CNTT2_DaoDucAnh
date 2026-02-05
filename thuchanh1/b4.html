@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 700px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+
+        h3 {
+            border-bottom: 1px solid #aaa;
+            padding-bottom: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 6px;
+            vertical-align: top;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 120px;
+        }
+
+        .btn {
+            margin-top: 15px;
+            text-align: right;
+        }
+
+        button {
+            padding: 6px 12px;
+        }
+
+        .human-check {
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px dashed #aaa;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+<form>
+
+    <h3>Basic Info</h3>
+    <table>
+        <tr>
+            <td>Employee ID</td>
+            <td><input type="text" value="9" disabled></td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+            <td><input type="text" value="Dodsworth"></td>
+        </tr>
+        <tr>
+            <td>First Name</td>
+            <td><input type="text" value="Anne"></td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>
+                <input type="radio" name="gender"> Male
+                <input type="radio" name="gender"> Female
+                <input type="radio" name="gender"> ZZZ
+            </td>
+        </tr>
+        <tr>
+            <td>Title</td>
+            <td><input type="text" value="Sales Representative"></td>
+        </tr>
+        <tr>
+            <td>Suffix</td>
+            <td><input type="text" value="Ms."></td>
+        </tr>
+        <tr>
+            <td>BirthDate</td>
+            <td><input type="date"></td>
+        </tr>
+        <tr>
+            <td>HireDate</td>
+            <td><input type="date"></td>
+        </tr>
+        <tr>
+            <td>Reports To</td>
+            <td>
+                <select>
+                    <option>Buchanan</option>
+                    <option>Fuller</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+
+    <h3>Contact Info</h3>
+    <table>
+        <tr>
+            <td>Email</td>
+            <td><input type="email" placeholder="name@example.com"></td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td><input type="text" value="7 Houndstooth Rd."></td>
+        </tr>
+        <tr>
+            <td>City</td>
+            <td><input type="text" value="London"></td>
+        </tr>
+        <tr>
+            <td>Postal Code</td>
+            <td><input type="text" value="WGZ 7LT"></td>
+        </tr>
+        <tr>
+            <td>Country</td>
+            <td>
+                <select>
+                    <option>Russian Federation</option>
+                    <option>Vietnam</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Home Phone</td>
+            <td><input type="text" value="(234)234-2342"></td>
+        </tr>
+    </table>
+
+    <h3>Optional Info</h3>
+    <table>
+        <tr>
+            <td>Notes</td>
+            <td>
+                <textarea>
+Anne has a BA degree in English from St. Lawrence College.
+She is fluent in French and German.
+                </textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>Preferred Shift</td>
+            <td>
+                <input type="checkbox"> Regular
+                <input type="checkbox" checked> Grave Yard
+            </td>
+        </tr>
+        <tr>
+            <td>Active?</td>
+            <td><input type="checkbox" checked></td>
+        </tr>
+        <tr>
+            <td>Are you human?</td>
+            <td>
+                <input type="checkbox" required> I am not a robot
+            </td>
+        </tr>
+    </table>
+
+    <div class="human-check">
+        <strong>Are you human?</strong><br>
+        <input type="checkbox" required> I am not a robot
+    </div>
+
+    <div class="btn">
+        <button type="submit">Submit</button>
+        <button type="reset">Cancel</button>
+    </div>
+
+</form>
+</div>
+
+</body>
+</html>
