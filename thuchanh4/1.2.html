@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Bộ lọc & Tìm kiếm</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f6fb;
+display:flex;
+justify-content:center;
+padding:40px;
+}
+
+.container{
+background:white;
+padding:25px;
+width:750px;
+border-radius:10px;
+box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+h2{
+text-align:center;
+}
+
+.controls{
+display:flex;
+gap:10px;
+margin-bottom:10px;
+}
+
+input,select{
+padding:7px;
+border-radius:5px;
+border:1px solid #ccc;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th{
+background:#2c3e50;
+color:white;
+cursor:pointer;
+}
+
+th,td{
+padding:8px;
+text-align:center;
+border-bottom:1px solid #ddd;
+}
+
+tr:hover{
+background:#f1f1f1;
+}
+
+.weak{
+background:#fff3b0;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Danh sách sinh viên</h2>
+
+<div class="controls">
+
+<input type="text" id="search" placeholder="Tìm tên...">
+
+<select id="filter">
+<option value="all">Tất cả</option>
+<option>Giỏi</option>
+<option>Khá</option>
+<option>Trung bình</option>
+<option>Yếu</option>
+</select>
+
+</div>
+
+<table>
+
+<thead>
+<tr>
+<th>STT</th>
+<th>Họ tên</th>
+<th id="scoreHeader">Điểm</th>
+<th>Xếp loại</th>
+</tr>
+</thead>
+
+<tbody id="tableBody"></tbody>
+
+</table>
+
+</div>
+
+<script>
+
+let students=[
+{name:"Nguyễn An",score:9},
+{name:"Trần Bình",score:4},
+{name:"Lê Nam",score:7.5},
+{name:"Phạm Hoa",score:6},
+{name:"Nguyễn Lan",score:8.7}
+];
+
+let filteredStudents=[...students];
+
+let sortAsc=true;
+
+function classify(score){
+
+if(score>=8.5) return "Giỏi";
+if(score>=7) return "Khá";
+if(score>=5) return "Trung bình";
+return "Yếu";
+
+}
+
+function applyFilters(){
+
+let keyword=document.getElementById("search").value.toLowerCase();
+let filter=document.getElementById("filter").value;
+
+filteredStudents=students.filter(function(st){
+
+let matchName=st.name.toLowerCase().includes(keyword);
+
+let type=classify(st.score);
+
+let matchType=(filter==="all" || type===filter);
+
+return matchName && matchType;
+
+});
+
+filteredStudents.sort(function(a,b){
+
+return sortAsc ? a.score-b.score : b.score-a.score;
+
+});
+
+renderTable();
+
+}
+
+function renderTable(){
+
+let tbody=document.getElementById("tableBody");
+
+tbody.innerHTML="";
+
+if(filteredStudents.length===0){
+
+tbody.innerHTML="<tr><td colspan='4'>Không có kết quả</td></tr>";
+
+return;
+
+}
+
+filteredStudents.forEach(function(st,i){
+
+let tr=document.createElement("tr");
+
+if(st.score<5) tr.classList.add("weak");
+
+tr.innerHTML=
+"<td>"+(i+1)+"</td>"+
+"<td>"+st.name+"</td>"+
+"<td>"+st.score+"</td>"+
+"<td>"+classify(st.score)+"</td>";
+
+tbody.appendChild(tr);
+
+});
+
+}
+
+document.getElementById("search").addEventListener("input",applyFilters);
+
+document.getElementById("filter").addEventListener("change",applyFilters);
+
+document.getElementById("scoreHeader").addEventListener("click",function(){
+
+sortAsc=!sortAsc;
+
+this.innerHTML="Điểm "+(sortAsc?"▲":"▼");
+
+applyFilters();
+
+});
+
+applyFilters();
+
+</script>
+
+</body>
+</html>
