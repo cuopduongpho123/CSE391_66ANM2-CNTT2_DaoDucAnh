@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conference Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">Conference Management</div>
+        <nav>
+            <a href="#">Trang chủ</a>
+            <a href="#">Liên hệ</a>
+        </nav>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Type to filler table">
+            <button id="searchBtn" type="button">Find
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="top-bar">
+            <h1>Conference dashboard</h1>
+            <button id="btnOpenModal" class="btn btn-primary" type="button">+ Add new</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Conference name</th>
+                    <th>Email</th>
+                    <th>Speakers</th>
+                    <th>Date</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody id="employeeTableBody"></tbody>
+        </table>
+    </main>
+
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add new conference</h2>
+                <button id="btnCloseModal" class="close-btn" type="button">&times;</button>
+            </div>
+
+            <form id="employeeForm" novalidate>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="hoTen">Conference name</label>
+                        <input type="text" id="hoTen" maxlength="60" required>
+                        <small class="error" id="errorHoTen"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                        <small class="error" id="errorEmail"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="soDienThoai">Speakers</label>
+                        <input type="text" id="soDienThoai" required>
+                        <small class="error" id="errorSoDienThoai"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" required>
+                        <small class="error" id="err-date"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" id="location" required>
+                        <small class="error" id="errorLocation"></small>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-success">Lưu</button>
+                    <button type="button" id="btnCancel" class="btn btn-secondary">Hủy</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
